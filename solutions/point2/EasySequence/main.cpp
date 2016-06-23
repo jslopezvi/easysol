@@ -123,12 +123,16 @@ int main(int argc, char *argv[])
            while(incommingBuffer.size()) {               
                // Read front element. incommingBuffer should be used as a FIFO queue.
                char byte = incommingBuffer.front();
+			   
+			   // After processing the byte, remove it from incommingBuffer.
+               incommingBuffer.pop_front();
 
                // Count byte
                bytesCounter++;
 
                // Check if frame is complete
-               if(frame.addByte(byte)) {
+               if(frame.addByte(byte)) {                   
+                    // Increase valida frames counter
                     validFramesFound++;
 
                     // Read frame payload
@@ -137,12 +141,17 @@ int main(int argc, char *argv[])
                     // Read next char from sequence
                     char sequenceChar = sequence.at(sequenceCounter).toLatin1() - '0';
 
+                    // Check if payload is the next byte in sequence
                     if(payload == sequenceChar) {
+                        // Increase sequence bytes counter
                         sequenceCounter++;
 
                         if(sequenceCounter == sequenceSize) {
                             // Sequence found
                             sequenceFound = true;
+
+                            // Hide progress bar
+                            progress.hide();
 
                             // Show message to user
                             QMessageBox::information(w.centralWidget(),
@@ -162,10 +171,7 @@ int main(int argc, char *argv[])
 
                     // Reset frame container
                     frame.clear();
-               }
-
-               // After processing the byte, remove it from incommingBuffer.
-               incommingBuffer.pop_front();
+               }              
 
                progressBar->setValue(0);
                progress.setValue(0);
