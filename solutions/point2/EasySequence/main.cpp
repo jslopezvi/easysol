@@ -75,6 +75,7 @@ int main(int argc, char *argv[])
     w.setWindowTitle("EasySequence");
     w.show();
 
+    // Flag to find a new sequence. Defaults true.
     bool doItAgain = true;
 
     while(doItAgain) {
@@ -95,6 +96,15 @@ int main(int argc, char *argv[])
 
         // Save sequence size
         int sequenceSize = sequence.size();
+
+        // Validate sequence size
+        if(sequenceSize == 0) {
+            if(askDoItAgain(w)) {
+                continue;
+            } else {
+                break;
+            }
+        }
 
         // Counter for sequence matches
         int sequenceCounter = 0;
