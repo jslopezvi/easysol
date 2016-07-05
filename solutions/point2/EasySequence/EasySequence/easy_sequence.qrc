@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>EasySequence.ico</file>
+    </qresource>
+</RCC>

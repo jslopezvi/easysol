@@ -40,3 +40,9 @@ CMakeLists.txt.user
 /easysol/solutions/point2/Installer/nsis
 /solutions/point2/Installer/nsis
 /solutions/point1/EasyEvent_EnvironmentMonitoringService.docx
+/solutions/point2/EasySequence/Win32
+/solutions/point2/EasySequence/EasySequence.sdf
+/solutions/point2/EasySequence/EasySequence/Release
+/solutions/point2/EasySequence/EasySequence/Debug
+/solutions/point2/EasySequence/EasySequence/GeneratedFiles
+/solutions/point2/vs
